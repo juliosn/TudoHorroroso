@@ -1,0 +1,277 @@
+<style>
+    .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 2rem;
+        background-color: #ffffff;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        position: sticky;
+        top: 0;
+        z-index: 100;
+    }
+
+    .logo img {
+        width: 200px;
+        /* Ajustando o tamanho do logo */
+        height: auto;
+        cursor: pointer;
+    }
+
+    nav ul {
+        display: flex;
+        list-style: none;
+        gap: 2rem;
+        /* Espaçamento entre os itens */
+        margin: 0;
+        padding: 0;
+    }
+
+    nav li {
+        display: inline;
+    }
+
+    nav a {
+        text-decoration: none;
+        color: #333;
+        font-weight: bold;
+        font-size: 1rem;
+        transition: color 0.3s ease, transform 0.2s;
+    }
+
+    nav a:hover {
+        color: #ff6f00;
+        transform: scale(1.1);
+    }
+
+    body {
+        font-family: 'Arial', sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f3f4f6;
+    }
+
+    header {
+        background-color: #ff7f50;
+        color: #fff;
+        padding: 20px;
+        text-align: center;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .container {
+        max-width: 900px;
+        margin: 50px auto;
+        padding: 20px;
+        background: #fff;
+        border-radius: 15px;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .recipe-card {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .recipe-image {
+        width: 100%;
+        max-height: 300px;
+        object-fit: cover;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .recipe-details {
+        text-align: center;
+        padding: 10px;
+    }
+
+    h1 {
+        font-size: 2rem;
+        color: #333;
+        margin: 10px 0;
+    }
+
+    .category {
+        font-size: 1.2rem;
+        color: #ff7f50;
+        font-weight: bold;
+    }
+
+    .section {
+        margin-top: 30px;
+        padding: 10px;
+    }
+
+    .section h3 {
+        font-size: 1.5rem;
+        color: #555;
+        margin-bottom: 15px;
+    }
+
+    .ingredients {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .ingredients li {
+        font-size: 1.1rem;
+        color: #555;
+        background: #f9f9f9;
+        padding: 10px;
+        border-radius: 8px;
+        margin-bottom: 10px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .instructions-text {
+        font-size: 1.1rem;
+        color: #555;
+        line-height: 1.6;
+        background: #f9f9f9;
+        padding: 15px;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .buttons {
+        display: flex;
+        justify-content: space-evenly;
+        gap: 15px;
+        margin-top: 30px;
+        width: 100%;
+    }
+
+    .buttons button {
+        padding: 10px 20px;
+        font-size: 1rem;
+        font-weight: bold;
+        border-radius: 8px;
+        border: none;
+        cursor: pointer;
+        transition: transform 0.2s ease, background-color 0.3s;
+    }
+
+    .buttons .edit {
+        background-color: #4CAF50;
+        color: #fff;
+    }
+
+    .buttons .edit:hover {
+        background-color: #3e8e41;
+        transform: scale(1.05);
+    }
+
+    .buttons .delete {
+        background-color: #f44336;
+        color: #fff;
+    }
+
+    .buttons .delete:hover {
+        background-color: #d32f2f;
+        transform: scale(1.05);
+    }
+
+    /* Estilo para o menu suspenso */
+    .dropdown {
+        position: relative;
+        display: inline-block;
+    }
+
+    .dropdown-menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        right: 0;
+        background-color: #ffffff;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        min-width: 150px;
+        z-index: 1000;
+    }
+
+    .dropdown-menu a {
+        display: block;
+        padding: 10px;
+        text-decoration: none;
+        color: #333;
+        font-size: 0.9rem;
+        border-bottom: 1px solid #f0f0f0;
+        transition: background-color 0.3s ease;
+    }
+
+    .dropdown-menu a:last-child {
+        border-bottom: none;
+    }
+
+    .dropdown-menu a:hover {
+        background-color: #f9f9f9;
+    }
+
+    .profile-icon {
+        font-size: 2.5rem;
+        color: #ff6f00;
+        cursor: pointer;
+    }
+
+    .dropdown:hover .dropdown-menu {
+        display: block;
+    }
+</style>
+<header class="navbar">
+    <div class="logo">
+        <img src="../imgs/logo.png" alt="Swiggy Logo">
+    </div>
+    <nav>
+        <ul>
+            <li><a href="/">Receitas</a></li>
+            <li><a href="/myrecipes">Minhas Receitas</a></li>
+            <li><a href="/sobre">Sobre Nós</a></li>
+        </ul>
+    </nav>
+    <div class="auth-buttons">
+        <!-- Menu suspenso -->
+        <div class="dropdown">
+            <i class="fas fa-user-circle profile-icon"></i>
+            <div class="dropdown-menu">
+                <a href="/logout">Sair</a>
+            </div>
+        </div>
+    </div>
+</header>
+&nbsp;
+<div class="container">
+    <div class="recipe-card">
+        <img src="../imgs/teste.jpg" alt="Imagem da Receita" class="recipe-image">
+        <div class="recipe-details">
+            <h1>{{recipe.title}}</h1>
+        </div>
+    </div>
+
+    <div class="section">
+        <h3>Ingredientes:</h3>
+        <ul class="ingredients">
+            {{#each recipe.ingredients}}
+            <li>{{this}}</li>
+            {{/each}}
+        </ul>
+    </div>
+
+    <div class="section">
+        <h3>Modo de Preparo:</h3>
+        <p class="instructions-text">
+            {{recipe.instructions}}
+        </p>
+    </div>
+
+
+    <div class="buttons">
+        <button class="edit" onclick="window.location.href='/edit_recipe/{{recipe.id}}'">Editar Receita</button>
+        <button class="delete" onclick="window.location.href='/delete_recipe/{{recipe.id}}'">Excluir Receita</button>
+
+    </div>
+</div>

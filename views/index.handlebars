@@ -1,0 +1,173 @@
+<style>
+  /* Estilos para a barra de navegação */
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: #ffffff;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .logo img {
+    width: 200px;
+    /* Ajustando o tamanho do logo */
+    height: auto;
+    cursor: pointer;
+  }
+
+  nav ul {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+    /* Espaçamento entre os itens */
+    margin: 0;
+    padding: 0;
+  }
+
+  nav li {
+    display: inline;
+  }
+
+  nav a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+    font-size: 1rem;
+    transition: color 0.3s ease, transform 0.2s;
+  }
+
+  nav a:hover {
+    color: #ff6f00;
+    transform: scale(1.1);
+  }
+
+  /* Ajustando os botões de autenticação */
+  .auth-buttons {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  /* Estilos para o menu suspenso */
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+
+  .dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: #ffffff;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    min-width: 150px;
+    z-index: 1000;
+  }
+
+  .dropdown-menu a {
+    display: block;
+    padding: 10px;
+    text-decoration: none;
+    color: #333;
+    font-size: 0.9rem;
+    border-bottom: 1px solid #f0f0f0;
+    transition: background-color 0.3s ease;
+  }
+
+  .dropdown-menu a:last-child {
+    border-bottom: none;
+  }
+
+  .dropdown-menu a:hover {
+    background-color: #f9f9f9;
+  }
+
+  .profile-icon {
+    font-size: 2.5rem;
+    color: #ff6f00;
+    cursor: pointer;
+  }
+
+  .dropdown:hover .dropdown-menu {
+    display: block;
+  }
+</style>
+
+<header class="navbar">
+  <div class="logo">
+    <img src="../imgs/logo.png" alt="TudoHorroroso Logo">
+  </div>
+  <nav>
+    <ul>
+      <li><a href="#">Receitas</a></li>
+      <li><a href="/myrecipes">Minhas Receitas</a></li>
+      <li><a href="/sobre">Sobre Nós</a></li>
+    </ul>
+  </nav>
+  <div class="auth-buttons">
+    <!-- Menu suspenso -->
+    <div class="dropdown">
+      <i class="fas fa-user-circle profile-icon"></i>
+      <div class="dropdown-menu">
+        <a href="/logout">Sair</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <img src="../imgs/teste.jpg" alt="Receitas Horríveis" class="hero-img">
+  <div class="search-bar">
+    <input type="text" placeholder="Procure sua Receita Horrível">
+    <button>🔍</button>
+  </div>
+</section>
+
+<section class="recipes">
+  {{#each recipes}}
+  <a href="/view_recipe/{{id}}" class="recipe-card">
+    <img src="../imgs/teste.jpg" alt="{{title}}" class="hero-img">
+    <h3>{{title}}</h3>
+    <p>by {{user}}</p>
+  </a>
+  {{/each}}
+</section>
+
+<script>
+  const searchBar = document.querySelector(".search-bar input");
+  const recipesContainer = document.querySelector(".recipes");
+
+  searchBar.addEventListener("input", async (event) => {
+    const query = event.target.value;
+
+    try {
+      // Fazer a solicitação ao backend
+      const response = await fetch(`/search?q=${encodeURIComponent(query)}`);
+      const data = await response.json();
+
+      // Limpar o container de receitas
+      recipesContainer.innerHTML = "";
+
+      // Adicionar as receitas filtradas
+      data.recipes.forEach((recipe) => {
+        const recipeCard = `
+          <a href="/recipe/${recipe.id}" class="recipe-card">
+            <img src="../imgs/teste.jpg" alt="${recipe.title}" class="hero-img">
+            <h3>${recipe.title}</h3>
+            <p>by ${recipe.user}</p>
+          </a>
+        `;
+        recipesContainer.insertAdjacentHTML("beforeend", recipeCard);
+      });
+    } catch (error) {
+      console.error("Erro ao buscar receitas:", error);
+    }
+  });
+</script>

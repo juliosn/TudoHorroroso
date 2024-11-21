@@ -1,0 +1,186 @@
+<style>
+    .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 2rem;
+        background-color: #ffffff;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        position: sticky;
+        top: 0;
+        z-index: 100;
+    }
+
+    .logo img {
+        width: 200px;
+        /* Ajustando o tamanho do logo */
+        height: auto;
+        cursor: pointer;
+    }
+
+    nav ul {
+        display: flex;
+        list-style: none;
+        gap: 2rem;
+        /* Espaçamento entre os itens */
+        margin: 0;
+        padding: 0;
+    }
+
+    nav li {
+        display: inline;
+    }
+
+    nav a {
+        text-decoration: none;
+        color: #333;
+        font-weight: bold;
+        font-size: 1rem;
+        transition: color 0.3s ease, transform 0.2s;
+    }
+
+    nav a:hover {
+        color: #ff6f00;
+        transform: scale(1.1);
+    }
+
+    body {
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+        margin: 0;
+        padding: 0;
+    }
+
+    header {
+        background-color: #ff6f00;
+        color: #fff;
+        padding: 20px;
+        text-align: center;
+    }
+
+    .container {
+        padding: 20px;
+        max-width: 900px;
+        margin: 0 auto;
+    }
+
+    .team {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        justify-content: center;
+    }
+
+    .team-member {
+        background-color: #f9f9f9;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        padding: 20px;
+        text-align: center;
+        width: 250px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .team-member img {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        margin-bottom: 10px;
+    }
+
+    footer {
+        background-color: #333;
+        color: #fff;
+        text-align: center;
+        padding: 10px;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+    }
+
+    /* Estilo para o menu suspenso */
+    .dropdown {
+        position: relative;
+        display: inline-block;
+    }
+
+    .dropdown-menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        right: 0;
+        background-color: #ffffff;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        min-width: 150px;
+        z-index: 1000;
+    }
+
+    .dropdown-menu a {
+        display: block;
+        padding: 10px;
+        text-decoration: none;
+        color: #333;
+        font-size: 0.9rem;
+        border-bottom: 1px solid #f0f0f0;
+        transition: background-color 0.3s ease;
+    }
+
+    .dropdown-menu a:last-child {
+        border-bottom: none;
+    }
+
+    .dropdown-menu a:hover {
+        background-color: #f9f9f9;
+    }
+
+    .profile-icon {
+        font-size: 2.5rem;
+        color: #ff6f00;
+        cursor: pointer;
+    }
+
+    .dropdown:hover .dropdown-menu {
+        display: block;
+    }
+</style>
+
+<header class="navbar">
+    <div class="logo">
+        <img src="../imgs/logo.png" alt="TudoHorroroso Logo">
+    </div>
+    <nav>
+        <ul>
+            <li><a href="/">Receitas</a></li>
+            <li><a href="/myrecipes">Minhas Receitas</a></li>
+            <li><a href="/sobre">Sobre Nós</a></li>
+        </ul>
+    </nav>
+    <div class="auth-buttons">
+        <!-- Menu suspenso -->
+        <div class="dropdown">
+            <i class="fas fa-user-circle profile-icon"></i>
+            <div class="dropdown-menu">
+                <a href="/logout">Sair</a>
+            </div>
+        </div>
+    </div>
+</header>
+
+&nbsp;
+<section class="container">
+    <div class="about">
+        <img src="../imgs/logo_about.png" alt="João Silva" class="about-image">
+        <div class="about-text">
+            <h2>Quem Somos?</h2>
+            <p>A TudoHorroso surgiu com um propósito inusitado: transformar a experiência culinária em algo
+                divertido e cheio de risadas! Em vez de buscar receitas deliciosas, decidimos explorar o lado "menos
+                saboroso" da gastronomia. Aqui, você vai encontrar receitas de pratos que, com certeza, vão testar
+                suas habilidades culinárias... e seu paladar!</p>
+            Por isso, nosso lema é simples: "Nada é tão ruim que não possa ser compartilhado!" Se você é fã de humor
+            e adora uma boa piada culinária, junte-se a nós e descubra como transformar qualquer desastre na cozinha
+            em uma verdadeira obra-prima... de risadas!</p>
+        </div>
+    </div>
+</section>

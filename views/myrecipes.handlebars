@@ -1,0 +1,150 @@
+<style>
+    .floating-button {
+        position: fixed;
+        bottom: 2rem;
+        right: 2rem;
+        background-color: #ff6f00;
+        color: white;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 2rem;
+        cursor: pointer;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    .floating-button:hover {
+        background-color: #e65d00;
+        transform: scale(1.1);
+    }
+
+    .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 2rem;
+        background-color: #ffffff;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        position: sticky;
+        top: 0;
+        z-index: 100;
+    }
+
+    .logo img {
+        width: 200px;
+        /* Ajustando o tamanho do logo */
+        height: auto;
+        cursor: pointer;
+    }
+
+    nav ul {
+        display: flex;
+        list-style: none;
+        gap: 2rem;
+        /* Espaçamento entre os itens */
+        margin: 0;
+        padding: 0;
+    }
+
+    nav li {
+        display: inline;
+    }
+
+    nav a {
+        text-decoration: none;
+        color: #333;
+        font-weight: bold;
+        font-size: 1rem;
+        transition: color 0.3s ease, transform 0.2s;
+    }
+
+    nav a:hover {
+        color: #ff6f00;
+        transform: scale(1.1);
+    }
+
+    /* Estilo para o menu suspenso */
+    .dropdown {
+        position: relative;
+        display: inline-block;
+    }
+
+    .dropdown-menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        right: 0;
+        background-color: #ffffff;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        min-width: 150px;
+        z-index: 1000;
+    }
+
+    .dropdown-menu a {
+        display: block;
+        padding: 10px;
+        text-decoration: none;
+        color: #333;
+        font-size: 0.9rem;
+        border-bottom: 1px solid #f0f0f0;
+        transition: background-color 0.3s ease;
+    }
+
+    .dropdown-menu a:last-child {
+        border-bottom: none;
+    }
+
+    .dropdown-menu a:hover {
+        background-color: #f9f9f9;
+    }
+
+    .profile-icon {
+        font-size: 2.5rem;
+        color: #ff6f00;
+        cursor: pointer;
+    }
+
+    .dropdown:hover .dropdown-menu {
+        display: block;
+    }
+</style>
+
+<header class="navbar">
+    <div class="logo">
+        <img src="../imgs/logo.png" alt="TudoHorroroso Logo">
+    </div>
+    <nav>
+        <ul>
+            <li><a href="/">Receitas</a></li>
+            <li><a href="/myrecipes">Minhas Receitas</a></li>
+            <li><a href="/sobre">Sobre Nós</a></li>
+        </ul>
+    </nav>
+    <div class="auth-buttons">
+        <!-- Menu suspenso -->
+        <div class="dropdown">
+            <i class="fas fa-user-circle profile-icon"></i>
+            <div class="dropdown-menu">
+                <a href="/logout">Sair</a>
+            </div>
+        </div>
+    </div>
+</header>
+<section class="recipes">
+    {{#each recipes}}
+    <a href="/manage_recipe/{{id}}" class="recipe-card">
+        <img src="../imgs/teste.jpg" alt="{{title}}" class="hero-img">
+        <h3>{{title}}</h3>
+        <p>by {{user}}</p>
+    </a>
+    {{/each}}
+</section>
+
+<!-- Floating Button -->
+<a href="/add_recipe" class="floating-button" title="Adicionar Receita">+</a>
