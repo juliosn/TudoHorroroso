@@ -42,7 +42,8 @@
 <img src="https://github.com/user-attachments/assets/dd9087bb-950a-4edf-bd7b-fae0dca6c98d" width="50%" height="50%">
 
 <h4>View Recipe</h4>
-<img src="https://github.com/user-attachments/assets/0a1f06e8-e61c-432c-87de-1d084dc4017c" width="50%" height="50%">
+<img src="https://github.com/user-attachments/assets/0e353240-398e-4b46-9377-4f40e4643c6f" width="50%" height="50%">
+
 
 <h4>Nav Menu</h4>
 <img src="https://github.com/user-attachments/assets/def31b31-b1af-4917-803e-154fbe0d7169" width="50%" height="50%">
@@ -74,10 +75,10 @@
 <img src="https://github.com/user-attachments/assets/4a719110-21c7-448e-807f-c4fbfd61938c">
 
 <h4>Home</h4>
-<img src="https://github.com/user-attachments/assets/e9ca48fd-8e67-4bc5-ae78-c650bb0e0744">
+<img src="https://github.com/user-attachments/assets/04912d82-78d4-403d-8e98-d30edde909ad">
 
 <h4>View Recipe</h4>
-<img src="https://github.com/user-attachments/assets/d45b6f88-055b-45d1-be36-51b8bb7d5822">
+<img src="https://github.com/user-attachments/assets/d9f4d616-219e-468d-b3f1-b7ab13763fa3">
 
 <h4>User's Recipes</h4>
 <img src="https://github.com/user-attachments/assets/92298804-1be6-438b-a74a-382a6fd66180">
